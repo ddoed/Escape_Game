@@ -37,7 +37,7 @@ public class DoorManager : MonoBehaviour
 
     public void CheckDoorId(int id)
     {
-        foreach (Door door in doorEntities)
+        foreach (var door in doorEntities)
         {
             if (door.id != id)
                 continue;

@@ -29,6 +29,4 @@ public class Door : MonoBehaviour
         anim.Play(closeHashCode);
     }
 
-   
-
 }
