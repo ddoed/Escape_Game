@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Door02
+  m_Controller: {fileID: 9100000, guid: 71a38efc6cf76ac43a531a1a1ba4c837, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 45d8c33eef1a00043a6ef04b7def5426, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7d0414443ff433b429da33544afbf878, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8ac911cf3dc33ac44a23b3d2bba357f9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b1c70c22592fa904fb94658f21718791, type: 2}
