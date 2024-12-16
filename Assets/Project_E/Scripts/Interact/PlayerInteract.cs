@@ -23,15 +23,11 @@ public class PlayerInteract : MonoBehaviour
         if(Physics.Raycast(_camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f)),
             _camera.transform.forward, out hit, rayLength))
         {
-            var door = hit.collider.GetComponent<Door>();
+            var interactable = hit.collider.GetComponent<IInteract>();
 
-            if (door != null)
+            if(interactable != null && Input.GetKeyDown(keycode))
             {
-                if(Input.GetKeyDown(keycode))
-                {
-                    DoorManager.Instance.CheckDoorId(door.id);
-                    ExampleST.Instance.ShowDebug();
-                }
+                interactable.Interact();
             }
         }
     }
