@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
+using UnityEditor;
 
 public class InspectManager : SingleTon<InspectManager>
 {
@@ -30,6 +30,19 @@ public class InspectManager : SingleTon<InspectManager>
         objectDetailCanvasGroup.alpha = 0;
     }
 
+    private void Update()
+    {
+        if(startTimer)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                timer = 0;
+                startTimer = false;
+                StartCoroutine(FadeUI(false, fadeDuration));
+            }
+        }
+    }
 
 
     public void ShowName(string objectName, bool show)
@@ -49,6 +62,28 @@ public class InspectManager : SingleTon<InspectManager>
     public void ShowObjectDetail(string info)
     {
         objectDetailText.text = info;
+        StartCoroutine(FadeUI(true, fadeDuration));
+        timer = onScreenTimer;
+        startTimer = true;
 
+    }
+
+    IEnumerator FadeUI(bool fadeIn, float duration)
+    {
+        float startAlpha = fadeIn ? 0f : 1f;
+        float endAlpha = 1f - startAlpha;
+        float elapsedTime = 0f;
+        
+        objectDetailCanvasGroup.alpha = startAlpha;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float progress = elapsedTime / duration;
+            objectDetailCanvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, progress);
+            yield return null;
+        }
+
+        objectDetailCanvasGroup.alpha = endAlpha;
     }
 }
